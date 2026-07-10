@@ -1186,6 +1186,7 @@ if (!window.Kakao || !Kakao.isInitialized()) {
 showToast('카카오톡 공유를 불러오지 못했어요. 잠시 후 다시 시도해주세요');
 return;
 }
+try {
 Kakao.Share.sendCustom({
 templateId: 135162
 /* 템플릿에 사용자 인자(${...})를 넣어두셨다면 아래처럼 templateArgs로 전달하세요.
@@ -1195,10 +1196,11 @@ date: '2026년 12월 6일 일요일 11시',
 place: '라포르테 웨딩홀 5층'
 }
 */
-}).catch(function(err){
+});
+} catch (err) {
 console.error('Kakao Share error:', err);
 showToast('카카오톡 공유에 실패했어요. 콘솔(개발자 도구)의 에러 메시지를 확인해주세요');
-});
+}
 });
 
 /* ---------- 11. background music ---------- */
